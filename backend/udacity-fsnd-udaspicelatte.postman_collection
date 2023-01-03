@@ -1,0 +1,398 @@
+{
+	"info": {
+		"_postman_id": "92986e64-8d4f-4a57-9424-9ab8e43fceb1",
+		"name": "Udacity_coffee_shop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Drinks No Auth",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Manager Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "FUbqpDHt3Txv6FOoWLxJ33lMpH22gtwF",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "J01pAjQACoYsiupkmKBg1fYhIrJLbEgl8KNZEb5uQaPA59SPnVWPMPDvPON42MTr",
+							"type": "default"
+						},
+						{
+							"key": "audience",
+							"value": "http://127.0.0.1:5000",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "coffeeshopadmin@mail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "udacity12@",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev-jabmc17wohtvdb8z.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-jabmc17wohtvdb8z",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Barista Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "default"
+						},
+						{
+							"key": "client_id",
+							"value": "FUbqpDHt3Txv6FOoWLxJ33lMpH22gtwF",
+							"type": "default"
+						},
+						{
+							"key": "client_secret",
+							"value": "J01pAjQACoYsiupkmKBg1fYhIrJLbEgl8KNZEb5uQaPA59SPnVWPMPDvPON42MTr",
+							"type": "default"
+						},
+						{
+							"key": "audience",
+							"value": "http://127.0.0.1:5000",
+							"type": "default"
+						},
+						{
+							"key": "username",
+							"value": "coffeeshopbarista@mail.com",
+							"type": "default"
+						},
+						{
+							"key": "password",
+							"value": "udacity12@",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://dev-jabmc17wohtvdb8z.us.auth0.com/oauth/token",
+					"protocol": "https",
+					"host": [
+						"dev-jabmc17wohtvdb8z",
+						"us",
+						"auth0",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Detailed Drinks By Barista",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Barista_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks-detail",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks-detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Detailed Drinks By Manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Manager_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks-detail",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks-detail"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Drink By Manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Manager_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Drink\",\r\n    \"recipe\": [{\"name\": \"water\", \"color\": \"blue\", \"parts\": 1}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Drink Error By Barista",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Barista_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Test Drink\",\r\n    \"recipe\": [{\"name\": \"water\", \"color\": \"blue\", \"parts\": 1}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Drink By Manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Manager_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Water\",\r\n    \"recipe\": [{\"name\": \"water\", \"color\": \"blue\", \"parts\": 1}]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Drink By Manager",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{Manager_Token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:5000/drinks/2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"drinks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Barista_Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdCYmdGQmRGeW1KNFc5ZjFNRGkzSyJ9.eyJpc3MiOiJodHRwczovL2Rldi1qYWJtYzE3d29odHZkYjh6LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJGVWJxcERIdDNUeHY2Rk9vV0x4SjMzbE1wSDIyZ3R3RkBjbGllbnRzIiwiYXVkIjoiaHR0cDovLzEyNy4wLjAuMTo1MDAwIiwiaWF0IjoxNjcyNzA4MTUwLCJleHAiOjE2NzI3OTQ1NTAsImF6cCI6IkZVYnFwREh0M1R4djZGT29XTHhKMzNsTXBIMjJndHdGIiwic2NvcGUiOiJnZXQ6ZHJpbmtzLWRldGFpbCIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyIsInBlcm1pc3Npb25zIjpbImdldDpkcmlua3MtZGV0YWlsIl19.RrRuQWzErOd_bDgLH6_KifTmWyytHIfdZml3hOC3HNDoU3gRKddyoCrsZleTJGaVBBIMfh0p-F-KVppMXQC2s1yiU0xmRHAEHknwbRtObXNVybLYmsed8d_EgsMJ6HIWn2DXMmjfBdGMILwBJEcYf3jx4JI8sechQK60wKgAkFwXYoN6ucnMOAh4chRlXrZInP0GujoWQxQhWub_NjUq6gPv8_BiaxlMvV3W-j8j8kC3JLwFktDHsRxpRpLJV-jRgfVEa-ENf4aJq6IS8o2jFIL6aXTLU0Yt83CmljhNoCdBL7SHOBGgPGU85NX_WzOb4dI5wmxlsZT3HB0TduZWdQ",
+			"type": "default"
+		},
+		{
+			"key": "Manager_Token",
+			"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImdCYmdGQmRGeW1KNFc5ZjFNRGkzSyJ9.eyJpc3MiOiJodHRwczovL2Rldi1qYWJtYzE3d29odHZkYjh6LnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw2M2FmOTYxNjVhZGUzNjI5OTBkMjEzMTUiLCJhdWQiOiJodHRwOi8vMTI3LjAuMC4xOjUwMDAiLCJpYXQiOjE2NzI3MDgwMzYsImV4cCI6MTY3MjcxNTIzNiwiYXpwIjoiRlVicXBESHQzVHh2NkZPb1dMeEozM2xNcEgyMmd0d0YiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTpkcmlua3MiLCJnZXQ6ZHJpbmtzLWRldGFpbCIsInBhdGNoOmRyaW5rcyIsInBvc3Q6ZHJpbmtzIl19.tr5cMC05pmUFiHT7qJwJX4fr0TIpMOUzh5aXNPgyp5bCSlCV5CBu0IFOJeMJEN1I5908yOVaiaBmdLsCzvuZm3SjUtGpmJlckwCAMflYJPk2cpn6AQZ1MNcrCp2Qf6VA-3J99FQ47TWzo75VMcKaSEbRKUpsitNSmvy_cKa-IIZ2l1XOuX6F_1IO3mSnZIic4-5WXyneHTwzNB7TJ1d7YPXK4RZs_LCy56cN0xZsXfnCCjTu596NFeA8dkFwxYdPKmbqRGC1P7LkFFEocIkphIkxgpcVPpN0zot3vFhsUv1WrN_rSfgbZXXIm-qWZFURVmXlOM4Cdk_Wind3RL6fgA",
+			"type": "default"
+		}
+	]
+}
